@@ -1,0 +1,1214 @@
+﻿<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+
+    :root {
+        --bk-primary: #1a3c6e;
+        --bk-accent: #e8541a;
+        --bk-accent2: #f0a500;
+        --bk-surface: #ffffff;
+        --bk-surface2: #f4f7fc;
+        --bk-border: #dce4f0;
+        --bk-text: #1a2638;
+        --bk-muted: #6b7a99;
+        --bk-radius: 14px;
+        --bk-radius-sm: 8px;
+        --bk-shadow: 0 8px 40px rgba(26,60,110,0.13);
+        --bk-shadow-sm: 0 2px 12px rgba(26,60,110,0.08);
+        --bk-transition: all 0.22s cubic-bezier(.4,0,.2,1);
+    }
+
+    .bk-wrap {
+        font-family: 'Outfit', sans-serif;
+        color: var(--bk-text);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* ── TABS ── */
+    .bk-tabs {
+        display: flex;
+        gap: 4px;
+        background: rgba(26,60,110,0.07);
+        border-radius: 16px 16px 0 0;
+        padding: 6px 6px 0;
+        flex-wrap: wrap;
+    }
+
+    .bk-tab-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border: none;
+        background: transparent;
+        border-radius: 12px 12px 0 0;
+        font-family: 'Outfit', sans-serif;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--bk-muted);
+        cursor: pointer;
+        transition: var(--bk-transition);
+        position: relative;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .bk-tab-btn svg {
+        width: 17px;
+        height: 17px;
+        flex-shrink: 0;
+        opacity: 0.7;
+        transition: var(--bk-transition);
+    }
+
+    .bk-tab-btn:hover {
+        color: var(--bk-primary);
+        background: rgba(255,255,255,0.6);
+    }
+
+    .bk-tab-btn:hover svg { opacity: 1; }
+
+    .bk-tab-btn.active {
+        background: var(--bk-surface);
+        color: var(--bk-primary);
+        box-shadow: 0 -2px 0 var(--bk-accent) inset, 0 2px 16px rgba(26,60,110,0.10);
+    }
+
+    .bk-tab-btn.active svg { opacity: 1; }
+
+    /* ── PANEL ── */
+    .bk-panel {
+        background: var(--bk-surface);
+        border-radius: 0 16px 16px 16px;
+        box-shadow: var(--bk-shadow);
+        padding: 32px;
+    }
+
+    .bk-tab-content { display: none; }
+    .bk-tab-content.active { display: block; animation: bkFadeIn .3s ease; }
+
+    @@keyframes bkFadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION HEADER ── */
+    .bk-section-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .bk-section-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--bk-primary);
+        margin: 0;
+    }
+
+    .bk-section-sub {
+        font-size: 13px;
+        color: var(--bk-muted);
+        margin: 3px 0 0;
+    }
+
+    .bk-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: linear-gradient(135deg, #fff8ec, #fff3d4);
+        border: 1px solid #f0d080;
+        color: #8a6000;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+    }
+
+    /* ── JOURNEY TYPE TOGGLE ── */
+    .bk-journey-toggle {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+
+    .bk-jt-btn {
+        padding: 8px 18px;
+        border: 1.5px solid var(--bk-border);
+        background: var(--bk-surface);
+        border-radius: 30px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--bk-muted);
+        cursor: pointer;
+        transition: var(--bk-transition);
+    }
+
+    .bk-jt-btn:hover { border-color: var(--bk-primary); color: var(--bk-primary); }
+
+    .bk-jt-btn.active {
+        background: var(--bk-primary);
+        border-color: var(--bk-primary);
+        color: #fff;
+        box-shadow: 0 3px 12px rgba(26,60,110,0.25);
+    }
+
+    /* ── FORM GRID ── */
+    .bk-grid {
+        display: grid;
+        gap: 14px;
+    }
+
+    .bk-grid-2 { grid-template-columns: 1fr 1fr; }
+    .bk-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .bk-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+    /* ── ROUTE ROW ── */
+    .bk-route-row {
+        display: grid;
+        grid-template-columns: 1fr 48px 1fr;
+        gap: 0;
+        align-items: end;
+        background: var(--bk-surface2);
+        border: 1.5px solid var(--bk-border);
+        border-radius: var(--bk-radius);
+        overflow: visible;
+        position: relative;
+    }
+
+    .bk-route-field {
+        padding: 14px 18px;
+        position: relative;
+    }
+
+    .bk-route-field:first-child {
+        border-right: 1.5px solid var(--bk-border);
+    }
+
+    .bk-route-field:last-child {
+        border-left: 1.5px solid var(--bk-border);
+    }
+
+    .bk-field-label {
+        font-size: 10.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--bk-muted);
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .bk-field-label svg { width: 12px; height: 12px; }
+
+    .bk-field-input {
+        border: none;
+        background: transparent;
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--bk-text);
+        width: 100%;
+        outline: none;
+        padding: 0;
+    }
+
+    .bk-field-input::placeholder { color: #b0bcd4; font-weight: 400; font-size: 14px; }
+
+    .bk-field-sub {
+        font-size: 11px;
+        color: var(--bk-muted);
+        margin-top: 2px;
+    }
+
+    .bk-swap-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--bk-surface);
+        border: 2px solid var(--bk-border);
+        box-shadow: var(--bk-shadow-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--bk-transition);
+        align-self: center;
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .bk-swap-btn:hover {
+        background: var(--bk-accent);
+        border-color: var(--bk-accent);
+        transform: rotate(180deg);
+    }
+
+    .bk-swap-btn:hover svg { color: #fff; }
+
+    .bk-swap-btn svg { width: 18px; height: 18px; color: var(--bk-primary); transition: var(--bk-transition); }
+
+    /* ── GENERIC FIELD CARD ── */
+    .bk-field-card {
+        background: var(--bk-surface2);
+        border: 1.5px solid var(--bk-border);
+        border-radius: var(--bk-radius);
+        padding: 14px 18px;
+        cursor: pointer;
+        transition: var(--bk-transition);
+        position: relative;
+    }
+
+    .bk-field-card:hover, .bk-field-card:focus-within {
+        border-color: var(--bk-primary);
+        box-shadow: 0 0 0 3px rgba(26,60,110,0.07);
+    }
+
+    .bk-field-card input,
+    .bk-field-card select {
+        display: block;
+        border: none;
+        background: transparent;
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--bk-text);
+        width: 100%;
+        outline: none;
+        padding: 0;
+        margin-top: 4px;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .bk-field-card input::placeholder { color: #b0bcd4; font-weight: 400; font-size: 14px; }
+
+    .bk-field-card input[disabled] {
+        color: #c5cfe0;
+        cursor: not-allowed;
+    }
+
+    /* ── PAX DROPDOWN ── */
+    .bk-pax-trigger { cursor: pointer; }
+
+    .bk-pax-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: var(--bk-surface);
+        border: 1.5px solid var(--bk-border);
+        border-radius: var(--bk-radius);
+        box-shadow: 0 16px 48px rgba(26,60,110,0.18);
+        z-index: 100;
+        padding: 20px;
+        min-width: 300px;
+    }
+
+    .bk-pax-dropdown.open { display: block; animation: bkFadeIn .2s ease; }
+
+    .bk-pax-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--bk-border);
+    }
+
+    .bk-pax-row:last-of-type { border-bottom: none; }
+
+    .bk-pax-info strong { font-size: 14px; font-weight: 600; }
+    .bk-pax-info span { display: block; font-size: 11px; color: var(--bk-muted); margin-top: 1px; }
+
+    .bk-counter {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .bk-counter-btn {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--bk-border);
+        background: var(--bk-surface);
+        font-size: 18px;
+        line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        color: var(--bk-primary);
+        transition: var(--bk-transition);
+        font-weight: 300;
+    }
+
+    .bk-counter-btn:hover { background: var(--bk-primary); border-color: var(--bk-primary); color: #fff; }
+    .bk-counter-val { font-size: 16px; font-weight: 700; min-width: 20px; text-align: center; }
+
+    .bk-cabin-select {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--bk-border);
+    }
+
+    .bk-cabin-btn {
+        flex: 1;
+        padding: 8px 10px;
+        border: 1.5px solid var(--bk-border);
+        background: var(--bk-surface);
+        border-radius: 8px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--bk-muted);
+        cursor: pointer;
+        transition: var(--bk-transition);
+        text-align: center;
+    }
+
+    .bk-cabin-btn.active { background: var(--bk-primary); border-color: var(--bk-primary); color: #fff; }
+
+    .bk-pax-done {
+        width: 100%;
+        margin-top: 14px;
+        padding: 10px;
+        background: var(--bk-primary);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--bk-transition);
+    }
+
+    .bk-pax-done:hover { background: #0f2a52; }
+
+    /* ── PROMO CODE ── */
+    .bk-promo-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bk-primary);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: 'Outfit', sans-serif;
+        transition: var(--bk-transition);
+    }
+
+    .bk-promo-trigger:hover { color: var(--bk-accent); }
+
+    .bk-promo-input-row {
+        display: none;
+        margin-top: 12px;
+        animation: bkFadeIn .2s ease;
+    }
+
+    .bk-promo-input-row.open { display: flex; gap: 8px; }
+
+    .bk-promo-input-row input {
+        flex: 1;
+        padding: 11px 16px;
+        border: 1.5px solid var(--bk-border);
+        border-radius: 8px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        outline: none;
+        transition: var(--bk-transition);
+        background: var(--bk-surface2);
+    }
+
+    .bk-promo-input-row input:focus { border-color: var(--bk-primary); background: #fff; }
+
+    .bk-promo-apply {
+        padding: 11px 18px;
+        background: var(--bk-surface2);
+        border: 1.5px solid var(--bk-border);
+        border-radius: 8px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bk-primary);
+        cursor: pointer;
+        transition: var(--bk-transition);
+    }
+
+    .bk-promo-apply:hover { background: var(--bk-primary); color: #fff; border-color: var(--bk-primary); }
+
+    /* ── CTA ROW ── */
+    .bk-cta-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 24px;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .bk-cta-left { display: flex; flex-direction: column; gap: 12px; }
+
+    .bk-options-row {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .bk-option-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 14px;
+        border: 1.5px solid var(--bk-border);
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--bk-muted);
+        background: var(--bk-surface);
+        cursor: pointer;
+        transition: var(--bk-transition);
+    }
+
+    .bk-option-chip:hover { border-color: var(--bk-primary); color: var(--bk-primary); }
+    .bk-option-chip svg { width: 13px; height: 13px; }
+
+    .bk-option-chip input[type="checkbox"] { display: none; }
+    .bk-option-chip.checked { background: #eef2ff; border-color: var(--bk-primary); color: var(--bk-primary); }
+
+    .bk-search-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 36px;
+        background: linear-gradient(135deg, var(--bk-accent), #c94010);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-family: 'Syne', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--bk-transition);
+        box-shadow: 0 6px 24px rgba(232,84,26,0.35);
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+    }
+
+    .bk-search-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(232,84,26,0.45);
+    }
+
+    .bk-search-btn svg { width: 20px; height: 20px; }
+
+    /* ── QUERY METHOD SELECTOR ── */
+    .bk-query-method {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+    }
+
+    .bk-qm-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 12px 16px;
+        border: 1.5px solid var(--bk-border);
+        background: var(--bk-surface2);
+        border-radius: var(--bk-radius-sm);
+        font-family: 'Outfit', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bk-muted);
+        cursor: pointer;
+        transition: var(--bk-transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        text-align: center;
+    }
+
+    .bk-qm-btn svg { width: 22px; height: 22px; opacity: 0.6; transition: var(--bk-transition); }
+    .bk-qm-btn:hover { border-color: var(--bk-primary); color: var(--bk-primary); background: #fff; }
+    .bk-qm-btn:hover svg { opacity: 1; }
+
+    .bk-qm-btn.active {
+        border-color: var(--bk-primary);
+        background: var(--bk-primary);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(26,60,110,0.2);
+    }
+
+    .bk-qm-btn.active svg { opacity: 1; color: #fff; }
+
+    .bk-query-form { display: none !important; }
+    .bk-query-form.active { display: grid !important; gap: 14px; animation: bkFadeIn .25s ease; }
+
+    .bk-help-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--bk-border);
+    }
+
+    .bk-help-link {
+        font-size: 12.5px;
+        color: var(--bk-muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: var(--bk-transition);
+    }
+
+    .bk-help-link:hover { color: var(--bk-accent); }
+    .bk-help-link svg { width: 13px; height: 13px; }
+
+    /* ── INFO CARDS ── */
+    .bk-info-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .bk-info-card {
+        background: var(--bk-surface2);
+        border: 1px solid var(--bk-border);
+        border-radius: var(--bk-radius-sm);
+        padding: 14px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .bk-info-card-icon {
+        width: 36px; height: 36px;
+        background: linear-gradient(135deg, var(--bk-primary), #2a5fad);
+        border-radius: 8px;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .bk-info-card-icon svg { width: 18px; height: 18px; color: #fff; }
+    .bk-info-card strong { font-size: 12.5px; font-weight: 700; color: var(--bk-text); display: block; }
+    .bk-info-card span { font-size: 11px; color: var(--bk-muted); }
+
+    /* ── STATUS CARDS ── */
+    .bk-status-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .bk-status-card {
+        background: var(--bk-surface2);
+        border: 1px solid var(--bk-border);
+        border-radius: var(--bk-radius-sm);
+        padding: 14px;
+        text-align: center;
+        transition: var(--bk-transition);
+    }
+
+    .bk-status-card:hover { border-color: var(--bk-primary); box-shadow: var(--bk-shadow-sm); }
+
+    .bk-status-card-icon {
+        width: 40px; height: 40px;
+        background: rgba(26,60,110,0.08);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 8px;
+    }
+
+    .bk-status-card-icon svg { width: 20px; height: 20px; color: var(--bk-primary); }
+    .bk-status-card strong { font-size: 12px; font-weight: 700; color: var(--bk-text); display: block; }
+    .bk-status-card span { font-size: 10.5px; color: var(--bk-muted); }
+
+    /* ── DIVIDER ── */
+    .bk-divider {
+        height: 1px;
+        background: var(--bk-border);
+        margin: 22px 0;
+    }
+
+    /* ── CHECKIN INFO BAR ── */
+    .bk-checkin-info {
+        background: linear-gradient(135deg, #eef4ff, #e6f0fb);
+        border: 1px solid #c5d8f8;
+        border-radius: var(--bk-radius-sm);
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .bk-checkin-info svg { width: 20px; height: 20px; color: var(--bk-primary); flex-shrink: 0; }
+    .bk-checkin-info p { margin: 0; font-size: 13px; color: #2a4a7f; line-height: 1.5; }
+    .bk-checkin-info strong { font-weight: 700; }
+
+    /* ── RESPONSIVE ── */
+    @@media (max-width: 768px) {
+        .bk-panel { padding: 20px 16px; }
+        .bk-grid-2, .bk-grid-3, .bk-grid-4 { grid-template-columns: 1fr; }
+        .bk-route-row { grid-template-columns: 1fr; }
+        .bk-route-field:first-child { border-right: none; border-bottom: 1.5px solid var(--bk-border); }
+        .bk-route-field:last-child { border-left: none; border-top: 1.5px solid var(--bk-border); }
+        .bk-swap-btn { display: none; }
+        .bk-tab-btn { padding: 10px 14px; font-size: 12px; }
+        .bk-status-cards { grid-template-columns: repeat(2, 1fr); }
+        .bk-info-cards { grid-template-columns: 1fr; }
+        .bk-cta-row { flex-direction: column; align-items: stretch; }
+        .bk-search-btn { justify-content: center; }
+    }
+</style>
+
+<div class="bk-wrap">
+    <div class="bk-tabs" role="tablist">
+        <button class="bk-tab-btn active" role="tab" aria-selected="true" data-bk-tab="search" onclick="bkSwitchTab(this,'search')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            Uçuş Ara
+        </button>
+        <button class="bk-tab-btn" role="tab" aria-selected="false" data-bk-tab="trips" onclick="bkSwitchTab(this,'trips')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            Seyahatlerim
+        </button>
+        <button class="bk-tab-btn" role="tab" aria-selected="false" data-bk-tab="checkin" onclick="bkSwitchTab(this,'checkin')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Online Check-in
+        </button>
+        <button class="bk-tab-btn" role="tab" aria-selected="false" data-bk-tab="status" onclick="bkSwitchTab(this,'status')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Uçuş Durumu
+        </button>
+    </div>
+
+    <div class="bk-panel">
+
+        <!-- ═══════════ TAB 1: UÇUŞ ARA ═══════════ -->
+        <div class="bk-tab-content active" id="bk-search">
+            <div class="bk-section-head">
+                <div>
+                    <h2 class="bk-section-title">Uçuş Ara</h2>
+                    <p class="bk-section-sub">Yüzlerce destinasyon, en iyi fiyatlar</p>
+                </div>
+                <span class="bk-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    1.200 TL'den başlayan fırsatlar
+                </span>
+            </div>
+
+            <div class="bk-journey-toggle">
+                <button class="bk-jt-btn active" onclick="bkJourneyType(this,'roundtrip')">Gidiş - Dönüş</button>
+                <button class="bk-jt-btn" onclick="bkJourneyType(this,'oneway')">Tek Yön</button>
+                <button class="bk-jt-btn" onclick="bkJourneyType(this,'multi')">Çoklu Uçuş</button>
+            </div>
+
+            <div class="bk-route-row" style="margin-bottom:14px;">
+                <div class="bk-route-field">
+                    <div class="bk-field-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+                        Nereden
+                    </div>
+                    <input class="bk-field-input" type="text" id="bk-from" placeholder="Şehir veya Havalimanı" autocomplete="off">
+                    <div class="bk-field-sub">İstanbul (IST, SAW)</div>
+                </div>
+                <button class="bk-swap-btn" onclick="bkSwapRoutes()" title="Güzergahı Değiştir">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4 4 4"/><path d="M17 8v12m0 0 4-4m-4 4-4-4"/></svg>
+                </button>
+                <div class="bk-route-field">
+                    <div class="bk-field-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Nereye
+                    </div>
+                    <input class="bk-field-input" type="text" id="bk-to" placeholder="Şehir veya Havalimanı" autocomplete="off">
+                    <div class="bk-field-sub">Londra (LHR, LGW, STN)</div>
+                </div>
+            </div>
+
+            <div class="bk-grid bk-grid-3" style="margin-bottom:14px;">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Gidiş Tarihi
+                    </div>
+                    <input class="bk-field-input" type="date" id="bk-depart">
+                    <div class="bk-field-sub">Esnek tarih seçin</div>
+                </div>
+                <div class="bk-field-card" id="bk-return-card">
+                    <div class="bk-field-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Dönüş Tarihi
+                    </div>
+                    <input class="bk-field-input" type="date" id="bk-return">
+                    <div class="bk-field-sub">Tek yönde devre dışı</div>
+                </div>
+                <div class="bk-field-card bk-pax-trigger" id="bk-pax-card" onclick="bkTogglePax()" style="position:relative;">
+                    <div class="bk-field-label">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Yolcu / Kabin Sınıfı
+                    </div>
+                    <div class="bk-field-input" id="bk-pax-display" style="display:block; cursor:pointer; font-size:15px; font-weight:600;">1 Yetişkin · Ekonomi</div>
+                    <div class="bk-field-sub">Tıklayarak düzenleyin</div>
+
+                    <div class="bk-pax-dropdown" id="bk-pax-dropdown">
+                        <div class="bk-pax-row">
+                            <div class="bk-pax-info"><strong>Yetişkin</strong><span>12 yaş ve üzeri</span></div>
+                            <div class="bk-counter">
+                                <button class="bk-counter-btn" onclick="bkPax(event,'adult',-1)">−</button>
+                                <span class="bk-counter-val" id="bk-adult-val">1</span>
+                                <button class="bk-counter-btn" onclick="bkPax(event,'adult',1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bk-pax-row">
+                            <div class="bk-pax-info"><strong>Çocuk</strong><span>2 – 11 yaş</span></div>
+                            <div class="bk-counter">
+                                <button class="bk-counter-btn" onclick="bkPax(event,'child',-1)">−</button>
+                                <span class="bk-counter-val" id="bk-child-val">0</span>
+                                <button class="bk-counter-btn" onclick="bkPax(event,'child',1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bk-pax-row">
+                            <div class="bk-pax-info"><strong>Bebek</strong><span>0 – 2 yaş (kucakta)</span></div>
+                            <div class="bk-counter">
+                                <button class="bk-counter-btn" onclick="bkPax(event,'infant',-1)">−</button>
+                                <span class="bk-counter-val" id="bk-infant-val">0</span>
+                                <button class="bk-counter-btn" onclick="bkPax(event,'infant',1)">+</button>
+                            </div>
+                        </div>
+                        <div class="bk-cabin-select">
+                            <button class="bk-cabin-btn active" onclick="bkCabin(this,'Ekonomi')">Ekonomi</button>
+                            <button class="bk-cabin-btn" onclick="bkCabin(this,'Premium Eko')">Premium Eko</button>
+                            <button class="bk-cabin-btn" onclick="bkCabin(this,'Business')">Business</button>
+                        </div>
+                        <button class="bk-pax-done" onclick="bkClosePax(event)">Tamam</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bk-cta-row">
+                <div class="bk-cta-left">
+                    <div class="bk-options-row">
+                        <label class="bk-option-chip" onclick="this.classList.toggle('checked')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM3 11h18v4H3zM3 19h18v4H3z" opacity=".3"/><path d="M8 5h8M8 13h5M8 21h3"/></svg>
+                            Fiyat Takvimi
+                        </label>
+                        <label class="bk-option-chip" onclick="this.classList.toggle('checked')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                            Esnek Tarihler
+                        </label>
+                        <label class="bk-option-chip" onclick="this.classList.toggle('checked')">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            Direkt Uçuşlar
+                        </label>
+                    </div>
+                    <div>
+                        <button class="bk-promo-trigger" onclick="bkTogglePromo()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                            Promosyon Kodu Kullan
+                        </button>
+                        <div class="bk-promo-input-row" id="bk-promo-row">
+                            <input type="text" placeholder="Promosyon kodunu girin" id="bk-promo-input">
+                            <button class="bk-promo-apply">Uygula</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="bk-search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                    Uçuşları Listele
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════ TAB 2: SEYAHATLERİM ═══════════ -->
+        <div class="bk-tab-content" id="bk-trips">
+            <div class="bk-section-head">
+                <div>
+                    <h2 class="bk-section-title">Seyahatlerim</h2>
+                    <p class="bk-section-sub">Rezervasyonlarınızı görüntüleyin, değiştirin veya iptal edin</p>
+                </div>
+            </div>
+
+            <div class="bk-query-method">
+                <button class="bk-qm-btn active" onclick="bkQMethod(this,'pnr')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    PNR ile Sorgula
+                </button>
+                <button class="bk-qm-btn" onclick="bkQMethod(this,'ticket')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/><path d="M13 5v2M13 17v2M13 11v2"/></svg>
+                    Bilet Numarası
+                </button>
+                <button class="bk-qm-btn" onclick="bkQMethod(this,'email')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    E-posta ile Bul
+                </button>
+            </div>
+
+            <div class="bk-query-form active bk-grid bk-grid-2" id="bkq-pnr">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Rezervasyon Kodu (PNR)</div>
+                    <input class="bk-field-input" type="text" placeholder="Örn: ABCD12">
+                    <div class="bk-field-sub">6 haneli rezervasyon kodunuz</div>
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Soyadınız</div>
+                    <input class="bk-field-input" type="text" placeholder="Pasaportundaki gibi">
+                    <div class="bk-field-sub">Büyük/küçük harf duyarsız</div>
+                </div>
+            </div>
+
+            <div class="bk-query-form bk-grid bk-grid-2" id="bkq-ticket">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Bilet Numarası</div>
+                    <input class="bk-field-input" type="text" placeholder="Örn: 235-1234567890">
+                    <div class="bk-field-sub">13 haneli bilet numaranız</div>
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Soyadınız</div>
+                    <input class="bk-field-input" type="text" placeholder="Pasaportundaki gibi">
+                </div>
+            </div>
+
+            <div class="bk-query-form" id="bkq-email">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">E-posta Adresiniz</div>
+                    <input class="bk-field-input" type="email" placeholder="rezervasyon@eposta.com">
+                    <div class="bk-field-sub">Rezervasyon onayının gönderildiği adres</div>
+                </div>
+            </div>
+
+            <div class="bk-cta-row">
+                <div class="bk-help-links">
+                    <a href="#" class="bk-help-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        PNR kodumu bilmiyorum
+                    </a>
+                    <a href="#" class="bk-help-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        Rezervasyon değişikliği
+                    </a>
+                    <a href="#" class="bk-help-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                        İade / İptal işlemleri
+                    </a>
+                </div>
+                <button class="bk-search-btn" style="background:linear-gradient(135deg,var(--bk-primary),#2a5fad);box-shadow:0 6px 24px rgba(26,60,110,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    Rezervasyonumu Bul
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════ TAB 3: ONLINE CHECK-IN ═══════════ -->
+        <div class="bk-tab-content" id="bk-checkin">
+            <div class="bk-section-head">
+                <div>
+                    <h2 class="bk-section-title">Online Check-in</h2>
+                    <p class="bk-section-sub">Koltuk seçiminizi yapın, biniş kartınızı anında alın</p>
+                </div>
+            </div>
+
+            <div class="bk-checkin-info">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p>Online check-in uçuş saatinden <strong>30 dakika</strong> ila <strong>24 saat</strong> öncesi arasında yapılabilir. Koltuk seçimi ve mobil biniş kartı ücretsizdir.</p>
+            </div>
+
+            <div class="bk-info-cards" style="margin-bottom:22px;">
+                <div class="bk-info-card">
+                    <div class="bk-info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    </div>
+                    <div><strong>Koltuk Seçimi</strong><span>Ücretsiz koltuk seçin</span></div>
+                </div>
+                <div class="bk-info-card">
+                    <div class="bk-info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div><strong>Bagaj Bilgisi</strong><span>Bagaj ekle veya görüntüle</span></div>
+                </div>
+                <div class="bk-info-card">
+                    <div class="bk-info-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                    </div>
+                    <div><strong>Mobil Kart</strong><span>Biniş kartını indirin</span></div>
+                </div>
+            </div>
+
+            <div class="bk-query-method" style="margin-bottom:18px;">
+                <button class="bk-qm-btn active" onclick="bkCIMethod(this,'ci-pnr')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    PNR + Soyad
+                </button>
+                <button class="bk-qm-btn" onclick="bkCIMethod(this,'ci-ticket')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/></svg>
+                    Bilet No + Soyad
+                </button>
+            </div>
+
+            <div class="bk-query-form active bk-grid bk-grid-2" id="ci-pnr">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Rezervasyon Kodu (PNR)</div>
+                    <input class="bk-field-input" type="text" placeholder="Örn: ABCD12">
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Soyadınız</div>
+                    <input class="bk-field-input" type="text" placeholder="Pasaportundaki gibi">
+                </div>
+            </div>
+
+            <div class="bk-query-form bk-grid bk-grid-2" id="ci-ticket">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Bilet Numarası</div>
+                    <input class="bk-field-input" type="text" placeholder="Örn: 235-1234567890">
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Soyadınız</div>
+                    <input class="bk-field-input" type="text" placeholder="Pasaportundaki gibi">
+                </div>
+            </div>
+
+            <div class="bk-cta-row" style="margin-top:22px;">
+                <div></div>
+                <button class="bk-search-btn" style="background:linear-gradient(135deg,#0f7a3c,#14a85a);box-shadow:0 6px 24px rgba(15,122,60,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Check-in Yap
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══════════ TAB 4: UÇUŞ DURUMU ═══════════ -->
+        <div class="bk-tab-content" id="bk-status">
+            <div class="bk-section-head">
+                <div>
+                    <h2 class="bk-section-title">Uçuş Durumu</h2>
+                    <p class="bk-section-sub">Gerçek zamanlı uçuş takibi ve bilgileri</p>
+                </div>
+                <span class="bk-badge" style="background:linear-gradient(135deg,#eefff5,#d4f7e4);border-color:#70d4a0;color:#0a5a2a;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>
+                    Canlı Takip
+                </span>
+            </div>
+
+            <div class="bk-query-method" style="margin-bottom:20px;">
+                <button class="bk-qm-btn active" onclick="bkFSMethod(this,'fs-flightno')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                    Uçuş Numarasıyla
+                </button>
+                <button class="bk-qm-btn" onclick="bkFSMethod(this,'fs-route')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M3 6h18M3 18h18" opacity=".3"/><path d="M8 6v-.5a2.5 2.5 0 0 1 5 0V6"/><path d="M8 18v.5a2.5 2.5 0 0 0 5 0V18"/></svg>
+                    Rotaya Göre
+                </button>
+            </div>
+
+            <div class="bk-query-form active bk-grid bk-grid-2" id="fs-flightno">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Uçuş Numarası</div>
+                    <input class="bk-field-input" type="text" placeholder="Örn: TK1903, PC1234">
+                    <div class="bk-field-sub">Havayolu kodu dahil girin</div>
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Tarih</div>
+                    <input class="bk-field-input" type="date">
+                    <div class="bk-field-sub">Uçuş tarihi</div>
+                </div>
+            </div>
+
+            <div class="bk-query-form bk-grid bk-grid-3" id="fs-route">
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Nereden</div>
+                    <input class="bk-field-input" type="text" placeholder="Kalkış şehri veya havalimanı">
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Nereye</div>
+                    <input class="bk-field-input" type="text" placeholder="Varış şehri veya havalimanı">
+                </div>
+                <div class="bk-field-card">
+                    <div class="bk-field-label">Tarih</div>
+                    <input class="bk-field-input" type="date">
+                </div>
+            </div>
+
+            <div class="bk-status-cards">
+                <div class="bk-status-card">
+                    <div class="bk-status-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <strong>Tahmini Kalkış</strong>
+                    <span>Sorgu yapın</span>
+                </div>
+                <div class="bk-status-card">
+                    <div class="bk-status-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                    </div>
+                    <strong>Tahmini Varış</strong>
+                    <span>Sorgu yapın</span>
+                </div>
+                <div class="bk-status-card">
+                    <div class="bk-status-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <strong>Kapı Bilgisi</strong>
+                    <span>Sorgu yapın</span>
+                </div>
+                <div class="bk-status-card">
+                    <div class="bk-status-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <strong>Gecikme Durumu</strong>
+                    <span>Sorgu yapın</span>
+                </div>
+            </div>
+
+            <div class="bk-cta-row" style="margin-top:22px;">
+                <div></div>
+                <button class="bk-search-btn" style="background:linear-gradient(135deg,#1a3c6e,#2a5fad);box-shadow:0 6px 24px rgba(26,60,110,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    Uçuşu Sorgula
+                </button>
+            </div>
+        </div>
+
+    </div><!-- /bk-panel -->
+</div><!-- /bk-wrap -->
+
+<script>
+    // ── Tab switching ──
+    function bkSwitchTab(btn, id) {
+        document.querySelectorAll('.bk-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.bk-tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('bk-' + id).classList.add('active');
+    }
+
+    // ── Journey type ──
+    function bkJourneyType(btn, type) {
+        document.querySelectorAll('.bk-jt-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        var returnCard = document.getElementById('bk-return-card');
+        var returnInput = document.getElementById('bk-return');
+        if (type === 'oneway') {
+            returnCard.style.opacity = '0.45';
+            returnCard.style.pointerEvents = 'none';
+            returnInput.disabled = true;
+        } else {
+            returnCard.style.opacity = '1';
+            returnCard.style.pointerEvents = 'auto';
+            returnInput.disabled = false;
+        }
+    }
+
+    // ── Swap routes ──
+    function bkSwapRoutes() {
+        var f = document.getElementById('bk-from');
+        var t = document.getElementById('bk-to');
+        var tmp = f.value; f.value = t.value; t.value = tmp;
+    }
+
+    // ── Pax counter ──
+    var bkPaxData = { adult: 1, child: 0, infant: 0, cabin: 'Ekonomi' };
+
+    function bkTogglePax() {
+        var dd = document.getElementById('bk-pax-dropdown');
+        dd.classList.toggle('open');
+    }
+
+    function bkClosePax(e) {
+        e.stopPropagation();
+        document.getElementById('bk-pax-dropdown').classList.remove('open');
+        bkUpdatePaxDisplay();
+    }
+
+    function bkPax(e, type, delta) {
+        e.stopPropagation();
+        var min = (type === 'adult') ? 1 : 0;
+        bkPaxData[type] = Math.max(min, Math.min(9, bkPaxData[type] + delta));
+        document.getElementById('bk-' + type + '-val').textContent = bkPaxData[type];
+    }
+
+    function bkCabin(btn, name) {
+        document.querySelectorAll('.bk-cabin-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        bkPaxData.cabin = name;
+    }
+
+    function bkUpdatePaxDisplay() {
+        var total = bkPaxData.adult + bkPaxData.child + bkPaxData.infant;
+        var label = total + ' Yolcu · ' + bkPaxData.cabin;
+        document.getElementById('bk-pax-display').textContent = label;
+    }
+
+    document.addEventListener('click', function (e) {
+        var card = document.getElementById('bk-pax-card');
+        var dd = document.getElementById('bk-pax-dropdown');
+        if (dd && dd.classList.contains('open') && !card.contains(e.target)) {
+            dd.classList.remove('open');
+            bkUpdatePaxDisplay();
+        }
+    });
+
+    // ── Promo code ──
+    function bkTogglePromo() {
+        var row = document.getElementById('bk-promo-row');
+        row.classList.toggle('open');
+        if (row.classList.contains('open')) {
+            document.getElementById('bk-promo-input').focus();
+        }
+    }
+
+    // ── Query method (Seyahatlerim) ──
+    function bkQMethod(btn, id) {
+        document.querySelectorAll('#bk-trips .bk-qm-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        var forms = ['bkq-pnr', 'bkq-ticket', 'bkq-email'];
+        forms.forEach(function (f) {
+            var el = document.getElementById(f);
+            if (el) el.classList.remove('active');
+        });
+        var target = document.getElementById('bkq-' + id);
+        if (target) target.classList.add('active');
+    }
+
+    // ── Check-in method ──
+    function bkCIMethod(btn, id) {
+        document.querySelectorAll('#bk-checkin .bk-qm-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['ci-pnr', 'ci-ticket'].forEach(function (f) {
+            var el = document.getElementById(f);
+            if (el) el.classList.remove('active');
+        });
+        var target = document.getElementById(id);
+        if (target) target.classList.add('active');
+    }
+
+    // ── Flight status method ──
+    function bkFSMethod(btn, id) {
+        document.querySelectorAll('#bk-status .bk-qm-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['fs-flightno', 'fs-route'].forEach(function (f) {
+            var el = document.getElementById(f);
+            if (el) el.classList.remove('active');
+        });
+        var target = document.getElementById(id);
+        if (target) target.classList.add('active');
+    }
+</script>

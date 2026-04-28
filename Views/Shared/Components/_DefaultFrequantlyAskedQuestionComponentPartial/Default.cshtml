@@ -1,0 +1,670 @@
+﻿@* Geair Havayolu - Sık Sorulan Sorular Partial View *@
+@* _FAQPartial.cshtml *@
+
+<section class="geair-faq" aria-label="Sık Sorulan Sorular">
+    <div class="faq-container">
+
+        <!-- Section Header -->
+        <div class="faq-header">
+            <span class="faq-label">Yardım Merkezi</span>
+            <h2 class="faq-title">Sık Sorulan <em>Sorular</em></h2>
+            <p class="faq-subtitle">
+                Merak ettiğiniz her şey burada. Cevabını bulamazsanız
+                <a href="/iletisim" class="faq-contact-link">destek ekibimize</a> ulaşabilirsiniz.
+            </p>
+        </div>
+
+        <!-- Accordion -->
+        <div class="faq-accordion" id="geairFaqAccordion">
+
+            <!-- Item 1 -->
+            <div class="faq-item" data-index="0">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-0">
+                    <span class="faq-question-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 14l-4-4 4-4" />
+                            <path d="M5 10h11a4 4 0 0 1 0 8h-1" />
+                        </svg>
+                    </span>
+                    <span class="faq-question-text">Bilet iptal ve iade sürecini nasıl başlatabilirim?</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-answer-0" role="region">
+                    <div class="faq-answer-inner">
+                        <p>
+                            Biletinizi iptal etmek için <strong>Hesabım → Uçuşlarım</strong> bölümüne giderek ilgili
+                            rezervasyonu seçip "İptal & İade" seçeneğini kullanabilirsiniz. İade tutarı,
+                            bilet sınıfınıza ve uçuş tarihine göre hesaplanır.
+                        </p>
+                        <ul class="faq-list">
+                            <li>Uçuştan <strong>72 saat öncesine</strong> kadar yapılan iptallerde tam iade uygulanır.</li>
+                            <li>24–72 saat arasındaki iptallerde %75 iade yapılır.</li>
+                            <li>Son 24 saat içindeki iptaller iade kapsamı dışındadır.</li>
+                        </ul>
+                        <p>İade işlemi 5–7 iş günü içinde ödeme yönteminize yansır.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="faq-item" data-index="1">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                    <span class="faq-question-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                            <line x1="12" y1="12" x2="12" y2="16" />
+                            <line x1="10" y1="14" x2="14" y2="14" />
+                        </svg>
+                    </span>
+                    <span class="faq-question-text">Ekstra bagaj hakkı satın alabilir miyim?</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-answer-1" role="region">
+                    <div class="faq-answer-inner">
+                        <p>
+                            Evet, mevcut bilet hakkınıza ek olarak fazladan bagaj hakkı satın alabilirsiniz.
+                            Bunu üç farklı yoldan yapabilirsiniz:
+                        </p>
+                        <ul class="faq-list">
+                            <li><strong>Online:</strong> Hesabım üzerinden uçuşa 2 saate kadar ek bagaj ekleyin.</li>
+                            <li><strong>Uygulama:</strong> Geair mobil uygulamasından kolayca yönetin.</li>
+                            <li><strong>Check-in Kontuarı:</strong> Havalimanında da satın alabilirsiniz (daha yüksek ücret uygulanabilir).</li>
+                        </ul>
+                        <p>
+                            Fiyatlar güzergaha ve mevsime göre değişmekte olup 8 kg'dan başlamaktadır.
+                            Detaylı tarife için <a href="/bagaj-ucretleri" class="faq-inline-link">Bagaj Ücretleri</a> sayfamızı ziyaret ediniz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="faq-item" data-index="2">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                    <span class="faq-question-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </span>
+                    <span class="faq-question-text">Online check-in işlemleri uçuşa ne kadar süre kala açılıyor?</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-answer-2" role="region">
+                    <div class="faq-answer-inner">
+                        <p>
+                            Geair'de online check-in, uçuş saatinizden <strong>48 saat önce</strong> başlar ve
+                            uçuştan <strong>2 saat öncesine</strong> kadar açık kalır.
+                        </p>
+                        <div class="faq-info-card">
+                            <div class="faq-info-row">
+                                <span>Check-in Açılışı</span>
+                                <strong>Uçuştan 48 saat önce</strong>
+                            </div>
+                            <div class="faq-info-row">
+                                <span>Check-in Kapanışı</span>
+                                <strong>Uçuştan 2 saat önce</strong>
+                            </div>
+                            <div class="faq-info-row">
+                                <span>Kart Teslimi</span>
+                                <strong>E-posta veya uygulama üzerinden</strong>
+                            </div>
+                        </div>
+                        <p>Online check-in sonrasında biniş kartınız e-posta adresinize otomatik olarak iletilir.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="faq-item" data-index="3">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                    <span class="faq-question-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                    </span>
+                    <span class="faq-question-text">Evcil hayvanımla seyahat edebilir miyim?</span>
+                    <span class="faq-toggle-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="faq-answer" id="faq-answer-3" role="region">
+                    <div class="faq-answer-inner">
+                        <p>
+                            Evcil hayvanınızla seyahat etmek mümkündür; ancak bazı koşulların sağlanması gerekmektedir.
+                            Kedi ve küçük köpekler (<strong>8 kg altı, taşıyıcı dahil</strong>) kabin içinde seyahat edebilir.
+                        </p>
+                        <ul class="faq-list">
+                            <li>Güncel aşı kartı ve sağlık belgesi zorunludur.</li>
+                            <li>IATA onaylı, havalandırmalı bir taşıyıcı kutu kullanılmalıdır.</li>
+                            <li>Taşıyıcı dahil toplam ağırlık 8 kg'ı geçmemelidir.</li>
+                            <li>Uçuştan en az <strong>48 saat önce</strong> rezervasyon sırasında bildirim yapılmalıdır.</li>
+                        </ul>
+                        <p>
+                            Daha büyük hayvanlar için kargo seçeneği mevcuttur.
+                            Detaylı bilgi için <a href="/evcil-hayvan-politikasi" class="faq-inline-link">Evcil Hayvan Politikamızı</a> inceleyebilirsiniz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.faq-accordion -->
+        <!-- Footer CTA -->
+        <div class="faq-footer">
+            <p>Aradığınız cevabı bulamadınız mı?</p>
+            <a href="/iletisim" class="faq-cta-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                Destek Ekibimize Yazın
+            </a>
+        </div>
+
+    </div><!-- /.faq-container -->
+</section>
+
+
+<style>
+    /* ============================================
+       GEAIR FAQ PARTIAL — STYLES
+       ============================================ */
+
+    :root {
+        --geair-navy: #0d1b3e;
+        --geair-navy-deep: #081229;
+        --geair-navy-mid: #1a2d5a;
+        --geair-navy-muted: rgba(13, 27, 62, 0.07);
+        --geair-navy-border: rgba(13, 27, 62, 0.13);
+        --geair-gold: #e8a020;
+        --geair-gold-light: #f0b840;
+        --geair-gold-muted: rgba(232, 160, 32, 0.12);
+        --geair-white: #ffffff;
+        --geair-off-white: #f5f3ee; /* krem/bej arka plan */
+        --geair-surface: #eeeae2;
+        --geair-border: #e2ddd4;
+        --geair-text: #0d1b3e;
+        --geair-text-mid: #2e3d5f;
+        --geair-text-soft: #6b7a99;
+        --geair-shadow-sm: 0 2px 8px rgba(13,27,62,0.07);
+        --geair-shadow-md: 0 6px 24px rgba(13,27,62,0.11);
+        --geair-shadow-lg: 0 16px 48px rgba(13,27,62,0.15);
+        --faq-radius: 14px;
+        --faq-radius-sm: 8px;
+        --faq-transition: 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ---- Section Wrapper ---- */
+    .geair-faq {
+        background: var(--geair-off-white);
+        padding: 80px 20px;
+        font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+    .faq-container {
+        max-width: 780px;
+        margin: 0 auto;
+    }
+
+    /* ---- Header ---- */
+    .faq-header {
+        text-align: center;
+        margin-bottom: 56px;
+    }
+
+    .faq-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--geair-gold);
+        margin-bottom: 16px;
+    }
+
+        .faq-label::before {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            background: var(--geair-gold);
+            border-radius: 2px;
+        }
+
+    .faq-title {
+        font-size: clamp(28px, 5vw, 40px);
+        font-weight: 400;
+        color: var(--geair-text);
+        line-height: 1.2;
+        margin: 0 0 16px;
+        letter-spacing: -0.02em;
+    }
+
+        .faq-title em {
+            font-style: italic;
+            color: var(--geair-gold);
+        }
+
+    .faq-subtitle {
+        font-family: 'Trebuchet MS', sans-serif;
+        font-size: 16px;
+        color: var(--geair-text-soft);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .faq-contact-link {
+        color: var(--geair-gold);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color var(--faq-transition);
+    }
+
+        .faq-contact-link:hover {
+            color: var(--geair-navy-deep);
+        }
+
+    /* ---- Accordion ---- */
+    .faq-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* ---- FAQ Item ---- */
+    .faq-item {
+        background: var(--geair-white);
+        border-radius: var(--faq-radius);
+        border: 1px solid var(--geair-border);
+        box-shadow: var(--geair-shadow-sm);
+        overflow: hidden;
+        transition: box-shadow var(--faq-transition), border-color var(--faq-transition);
+        position: relative;
+    }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: transparent;
+            border-radius: 0 0 0 0;
+            transition: background var(--faq-transition);
+            z-index: 1;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--geair-shadow-md);
+            border-color: var(--geair-navy-border);
+        }
+
+        .faq-item.is-open {
+            border-color: var(--geair-navy-border);
+            box-shadow: var(--geair-shadow-md);
+        }
+
+            .faq-item.is-open::before {
+                background: var(--geair-gold);
+            }
+
+    /* ---- Question Button ---- */
+    .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 22px 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        transition: background var(--faq-transition);
+    }
+
+        .faq-question:hover {
+            background: var(--geair-navy-muted);
+        }
+
+    .faq-item.is-open .faq-question {
+        background: var(--geair-navy-muted);
+    }
+
+    /* Question Icon (decorative svg) */
+    .faq-question-icon {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        background: var(--geair-surface);
+        border-radius: var(--faq-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--geair-text-soft);
+        transition: background var(--faq-transition), color var(--faq-transition);
+    }
+
+        .faq-question-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+    .faq-item.is-open .faq-question-icon {
+        background: var(--geair-navy);
+        color: var(--geair-white);
+    }
+
+    /* Question Text */
+    .faq-question-text {
+        flex: 1;
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--geair-text);
+        line-height: 1.4;
+        transition: color var(--faq-transition);
+    }
+
+    .faq-item.is-open .faq-question-text {
+        color: var(--geair-navy);
+    }
+
+    /* Toggle Arrow Icon */
+    .faq-toggle-icon {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--geair-text-soft);
+        transition: transform var(--faq-transition), color var(--faq-transition);
+    }
+
+        .faq-toggle-icon svg {
+            width: 18px;
+            height: 18px;
+            transition: stroke var(--faq-transition);
+        }
+
+    .faq-item.is-open .faq-toggle-icon {
+        transform: rotate(180deg);
+        color: var(--geair-gold);
+    }
+
+    /* ---- Answer Panel ---- */
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.44s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer-inner {
+        padding: 0 24px 24px 74px; /* aligns with text after icon */
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        font-size: 15px;
+        color: var(--geair-text-mid);
+        line-height: 1.72;
+    }
+
+        .faq-answer-inner p {
+            margin: 0 0 12px;
+        }
+
+            .faq-answer-inner p:last-child {
+                margin-bottom: 0;
+            }
+
+    /* List inside answer */
+    .faq-list {
+        margin: 10px 0 14px;
+        padding-left: 0;
+        list-style: none;
+    }
+
+        .faq-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 8px;
+        }
+
+            .faq-list li::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 9px;
+                width: 6px;
+                height: 6px;
+                background: var(--geair-gold);
+                border-radius: 50%;
+            }
+
+    /* Inline link */
+    .faq-inline-link {
+        color: var(--geair-gold);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color var(--faq-transition);
+    }
+
+        .faq-inline-link:hover {
+            color: var(--geair-navy-deep);
+        }
+
+    /* Info Card (check-in times) */
+    .faq-info-card {
+        background: var(--geair-surface);
+        border: 1px solid var(--geair-border);
+        border-radius: var(--faq-radius-sm);
+        overflow: hidden;
+        margin: 14px 0;
+    }
+
+    .faq-info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--geair-border);
+    }
+
+        .faq-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .faq-info-row span {
+            color: var(--geair-text-soft);
+        }
+
+        .faq-info-row strong {
+            color: var(--geair-text);
+        }
+
+    /* ---- Footer CTA ---- */
+    .faq-footer {
+        text-align: center;
+        margin-top: 52px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+        .faq-footer p {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            color: var(--geair-text-soft);
+            margin: 0;
+        }
+
+    .faq-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--geair-navy);
+        color: var(--geair-white);
+        font-family: 'Trebuchet MS', 'Gill Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 14px 28px;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        box-shadow: 0 4px 18px rgba(13,27,62,0.22);
+        transition: background var(--faq-transition), box-shadow var(--faq-transition), transform 0.2s;
+    }
+
+        .faq-cta-btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .faq-cta-btn:hover {
+            background: var(--geair-navy-deep);
+            box-shadow: 0 8px 28px rgba(13,27,62,0.30);
+            transform: translateY(-1px);
+            color: var(--geair-white);
+            text-decoration: none;
+        }
+
+        .faq-cta-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--geair-shadow-sm);
+        }
+
+    /* ---- Focus Accessibility ---- */
+    .faq-question:focus-visible {
+        outline: 2px solid var(--geair-gold);
+        outline-offset: -2px;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @@media (max-width: 600px) {
+        .geair-faq {
+            padding: 52px 16px;
+        }
+
+        .faq-header {
+            margin-bottom: 36px;
+        }
+
+        .faq-question {
+            padding: 18px 16px;
+            gap: 12px;
+        }
+
+        .faq-question-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .faq-question-text {
+            font-size: 14px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 16px 20px 16px; /* full-width on mobile, no icon offset */
+            font-size: 14px;
+        }
+
+        .faq-info-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .faq-cta-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 16px 24px;
+        }
+
+        .faq-footer {
+            margin-top: 40px;
+        }
+    }
+
+    @@media (max-width: 400px) {
+        .faq-title {
+            font-size: 24px;
+        }
+
+        .faq-question-icon {
+            display: none; /* hide icon on very small screens for clarity */
+        }
+
+        .faq-answer-inner {
+            padding-left: 16px;
+        }
+    }
+</style>
+
+
+<script>
+    (function () {
+        'use strict';
+
+        const accordion = document.getElementById('geairFaqAccordion');
+        if (!accordion) return;
+
+        const items = accordion.querySelectorAll('.faq-item');
+
+        items.forEach(function (item) {
+            const btn = item.querySelector('.faq-question');
+            const panel = item.querySelector('.faq-answer');
+            const inner = item.querySelector('.faq-answer-inner');
+
+            btn.addEventListener('click', function () {
+                const isOpen = item.classList.contains('is-open');
+
+                // Close all items
+                items.forEach(function (el) {
+                    el.classList.remove('is-open');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    el.querySelector('.faq-answer').style.maxHeight = '';
+                });
+
+                // If it was closed, open it
+                if (!isOpen) {
+                    item.classList.add('is-open');
+                    btn.setAttribute('aria-expanded', 'true');
+                    panel.style.maxHeight = inner.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Handle window resize for open panels
+        window.addEventListener('resize', function () {
+            items.forEach(function (item) {
+                if (item.classList.contains('is-open')) {
+                    const panel = item.querySelector('.faq-answer');
+                    const inner = item.querySelector('.faq-answer-inner');
+                    panel.style.maxHeight = inner.scrollHeight + 'px';
+                }
+            });
+        });
+    })();
+</script>

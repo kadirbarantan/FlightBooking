@@ -9,7 +9,7 @@ namespace FlightBooking.Mapping
         public GeneralMapping()
         {
             CreateMap<Flight, CreateFlightDto>().ReverseMap();
-            CreateMap<Flight, GetFlightDto>().ReverseMap();
+            CreateMap<Flight, GetFlightByIdDto>().ReverseMap();
             CreateMap<Flight, ResultFlightDto>().ReverseMap();
             CreateMap<Flight, UpdateFlightDto>().ReverseMap();
         }

@@ -1,4 +1,4 @@
-﻿﻿@* ============================================================
+﻿@* ============================================================
    Areas/Admin/Views/Flights/Index.cshtml
    Model: IEnumerable<FlightBooking.Dtos.FlightDtos.ResultFlightDto>
    Layout: AdminLayout
@@ -24,6 +24,23 @@
         ["Delayed"] = ("Gecikmeli", "status-delayed", "bi-exclamation-triangle"),
         ["Cancelled"] = ("İptal", "status-cancelled", "bi-x-circle"),
         ["Completed"] = ("Tamamlandı", "status-completed", "bi-check-circle"),
+    };
+
+    @* ---- Havayolu kodu → CSS sınıfı eşlemesi ---- *@
+    string AirlineChipClass(string code) => (code?.ToUpper()) switch
+    {
+        "TK" => "airline-tk",
+        "PC" => "airline-pc",
+        "LH" => "airline-lh",
+        "BA" => "airline-ba",
+        "AF" => "airline-af",
+        "U2" => "airline-u2",
+        "FR" => "airline-fr",
+        "EK" => "airline-ek",
+        "TJ" => "airline-tj",
+        "KL" => "airline-kl",
+        "QR" => "airline-qr",
+        _ => "airline-default",
     };
 }
 
@@ -94,7 +111,7 @@
         @* ── Filters ── *@
         <div class="table-card-header">
 
-            {{-- Arama --}}
+            @* Arama *@
             <div class="tbl-search">
                 <i class="bi bi-search si"></i>
                 <input type="text"
@@ -103,7 +120,7 @@
                        oninput="filterTable()" />
             </div>
 
-            {{-- Durum filtresi --}}
+            @* Durum filtresi *@
             <select class="filter-select" id="statusFilter" onchange="filterTable()">
                 <option value="">Tüm Durumlar</option>
                 <option value="Scheduled">Planlandı</option>
@@ -113,7 +130,7 @@
                 <option value="Completed">Tamamlandı</option>
             </select>
 
-            {{-- Havayolu filtresi (model'den dinamik) --}}
+            @* Havayolu filtresi (model'den dinamik) *@
             <select class="filter-select" id="airlineFilter" onchange="filterTable()">
                 <option value="">Tüm Havayolları</option>
                 @if (Model != null)
@@ -165,6 +182,9 @@
                                 ? sv
                                 : (flight.Status, "status-scheduled", "bi-circle");
 
+                            @* Havayolu chip CSS sınıfı *@
+                            var chipClass = AirlineChipClass(flight.AirlineCode);
+
                             @* Koltuk doluluk oranı *@
                             int occupancy = flight.TotalSeats > 0
                                 ? (int)Math.Round((double)(flight.TotalSeats - flight.AvailableSeats) / flight.TotalSeats * 100)
@@ -191,7 +211,7 @@
 
                                 @* Havayolu *@
                                 <td>
-                                    <span class="airline-chip">@flight.AirlineCode</span>
+                                    <span class="airline-chip @chipClass">@flight.AirlineCode</span>
                                 </td>
 
                                 @* Kalkış *@
@@ -359,17 +379,77 @@
 @section Styles {
     <style>
 
-        /* ---- Havayolu chip ---- */
+        /* ---- Havayolu chip – temel ---- */
         .airline-chip {
             display: inline-block;
             padding: 3px 10px;
-            background: var(--navy);
-            color: #fff;
             border-radius: 6px;
             font-family: 'Syne', sans-serif;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: .5px;
+        }
+
+        /* ---- Havayoluna özel renkler ---- */
+        /* Türk Hava Yolları */
+        .airline-tk {
+            background: #C70000;
+            color: #fff;
+        }
+        /* Pegasus */
+        .airline-pc {
+            background: #FF6B00;
+            color: #fff;
+        }
+        /* Lufthansa */
+        .airline-lh {
+            background: #05164D;
+            color: #FFCC00;
+        }
+        /* British Airways */
+        .airline-ba {
+            background: #075AAA;
+            color: #fff;
+        }
+        /* Air France */
+        .airline-af {
+            background: #002157;
+            color: #fff;
+        }
+        /* easyJet */
+        .airline-u2 {
+            background: #FF6600;
+            color: #fff;
+        }
+        /* Ryanair */
+        .airline-fr {
+            background: #073590;
+            color: #FFFF00;
+        }
+        /* Emirates */
+        .airline-ek {
+            background: #CC0001;
+            color: #D4A017;
+        }
+        /* AnadoluJet */
+        .airline-tj {
+            background: #E30613;
+            color: #fff;
+        }
+        /* KLM */
+        .airline-kl {
+            background: #009FE3;
+            color: #fff;
+        }
+        /* Qatar Airways */
+        .airline-qr {
+            background: #5C0632;
+            color: #C8A951;
+        }
+        /* Fallback */
+        .airline-default {
+            background: var(--navy);
+            color: #fff;
         }
 
         /* ---- Havalimanı hücresi ---- */
@@ -482,7 +562,7 @@
                 margin-left: 2px;
             }
 
-        /* ---- Tamamlandı badge (yeni durum) ---- */
+        /* ---- Tamamlandı badge ---- */
         .status-completed {
             background: rgba(107,114,153,.1);
             color: var(--gray-500);
@@ -527,22 +607,22 @@
         }
 
         function applyFiltersAndRender() {
-            const q       = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-            const status  = document.getElementById('statusFilter').value;
+            const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+            const status = document.getElementById('statusFilter').value;
             const airline = document.getElementById('airlineFilter').value;
 
             const rows = allRows();
 
             /* Her satırı filtrele; görünür olanları topla */
             const visible = rows.filter(row => {
-                const flightNo   = row.dataset.flightNo   || '';
+                const flightNo = row.dataset.flightNo || '';
                 const depAirport = row.dataset.depAirport || '';
                 const arrAirport = row.dataset.arrAirport || '';
-                const rowAirline = row.dataset.airline    || '';
-                const rowStatus  = row.dataset.status     || '';
+                const rowAirline = row.dataset.airline || '';
+                const rowStatus = row.dataset.status || '';
 
-                const matchQ       = !q      || [flightNo, depAirport, arrAirport, rowAirline].some(v => v.includes(q));
-                const matchStatus  = !status  || rowStatus  === status;
+                const matchQ = !q || [flightNo, depAirport, arrAirport, rowAirline].some(v => v.includes(q));
+                const matchStatus = !status || rowStatus === status;
                 const matchAirline = !airline || rowAirline === airline;
 
                 /* Önce hepsini gizle */
@@ -551,19 +631,19 @@
             });
 
             /* Pagination hesapla */
-            const total      = visible.length;
+            const total = visible.length;
             const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
             if (currentPage > totalPages) currentPage = totalPages;
 
-            const from  = total === 0 ? 0 : (currentPage - 1) * PER_PAGE + 1;
-            const to    = Math.min(currentPage * PER_PAGE, total);
+            const from = total === 0 ? 0 : (currentPage - 1) * PER_PAGE + 1;
+            const to = Math.min(currentPage * PER_PAGE, total);
             const slice = visible.slice(from - 1, to);
 
             /* Sadece mevcut sayfanın satırlarını göster */
             slice.forEach(row => row.style.display = '');
 
             /* Sayaç & info */
-            document.getElementById('rowCount').textContent   = `${total} uçuş bulundu`;
+            document.getElementById('rowCount').textContent = `${total} uçuş bulundu`;
             document.getElementById('footerInfo').textContent = `${from}–${to} / ${total} uçuş`;
 
             renderPagination(totalPages);
@@ -576,11 +656,11 @@
 
             /* Önceki */
             html += `<li class="${currentPage === 1 ? 'disabled' : ''}">
-                <span onclick="${currentPage > 1 ? 'goPage(currentPage-1)' : ''}"
-                      style="cursor:${currentPage === 1 ? 'default' : 'pointer'}">
-                    <i class="bi bi-chevron-left" style="font-size:11px;"></i>
-                </span>
-            </li>`;
+                        <span onclick="${currentPage > 1 ? 'goPage(currentPage-1)' : ''}"
+                              style="cursor:${currentPage === 1 ? 'default' : 'pointer'}">
+                            <i class="bi bi-chevron-left" style="font-size:11px;"></i>
+                        </span>
+                    </li>`;
 
             /* Sayfa numaraları (max 7 göster, ortada "...") */
             const pages = buildPageRange(currentPage, totalPages);
@@ -589,18 +669,18 @@
                     html += `<li><span style="cursor:default;border:none;color:var(--gray-300);">…</span></li>`;
                 } else {
                     html += `<li class="${p === currentPage ? 'active' : ''}">
-                        <a onclick="goPage(${p})">${p}</a>
-                    </li>`;
+                                <a onclick="goPage(${p})">${p}</a>
+                            </li>`;
                 }
             });
 
             /* Sonraki */
             html += `<li class="${currentPage === totalPages ? 'disabled' : ''}">
-                <span onclick="${currentPage < totalPages ? 'goPage(currentPage+1)' : ''}"
-                      style="cursor:${currentPage === totalPages ? 'default' : 'pointer'}">
-                    <i class="bi bi-chevron-right" style="font-size:11px;"></i>
-                </span>
-            </li>`;
+                        <span onclick="${currentPage < totalPages ? 'goPage(currentPage+1)' : ''}"
+                              style="cursor:${currentPage === totalPages ? 'default' : 'pointer'}">
+                            <i class="bi bi-chevron-right" style="font-size:11px;"></i>
+                        </span>
+                    </li>`;
 
             ul.innerHTML = html;
         }
@@ -610,9 +690,9 @@
             if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
             const pages = [];
             pages.push(1);
-            if (current > 3)           pages.push('...');
+            if (current > 3) pages.push('...');
             for (let p = Math.max(2, current - 1); p <= Math.min(total - 1, current + 1); p++) pages.push(p);
-            if (current < total - 2)   pages.push('...');
+            if (current < total - 2) pages.push('...');
             pages.push(total);
             return pages;
         }
@@ -626,7 +706,7 @@
         function confirmDelete(flightId, flightNo) {
             document.getElementById('deleteFlightNo').textContent = flightNo;
             document.getElementById('deleteForm').action =
-                `/Admin/Flights/Delete/${flightId}`;          // route'a göre düzenle
+                `/Admin/Flights/Delete/${flightId}`;
             document.getElementById('deleteModal').classList.add('open');
         }
 
@@ -643,9 +723,9 @@
         function showToast(msg, type = 'info') {
             const icons = {
                 success: 'bi-check-circle-fill',
-                danger:  'bi-x-circle-fill',
+                danger: 'bi-x-circle-fill',
                 warning: 'bi-exclamation-triangle-fill',
-                info:    'bi-info-circle-fill',
+                info: 'bi-info-circle-fill',
             };
             const container = document.getElementById('toastContainer');
             const t = document.createElement('div');
